@@ -2,6 +2,8 @@ import "./Home.css"
 import React from 'react'
 import Container from "../../containers/Container";
 import { Link } from "react-router-dom";
+import { faHeart, faHeartbeat, faSearch, faStoreSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const categories = [
   {
@@ -71,20 +73,86 @@ const categories = [
     to: "otdam",
   },
 ];
-
+const obj = [
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/30slr7hgyj323-UZ/image;s=644x461",
+    title: "Avto GPS tracker Sinotrack ST-901",
+    price: "300 000 сум",
+  },
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/avt6gbwd9ur71-UZ/image;s=644x461",
+    title: "Продаю абсолютно новые, разборные гантели по 25кг.",
+    price: "615 000 сум",
+  },
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/z25am0zom64v2-UZ/image;s=644x461",
+    title: "Cobalt кондиционер новый+установка+фреон+гарантия",
+    price: "575 у.е.",
+  },
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/laned8m4rda53-UZ/image;s=644x461",
+    title: "А3 Принтер продоёться СРОЧНО!!",
+    price: "3 000 000 сум",
+  },
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/qkyszn3os1uh3-UZ/image;s=644x461",
+    title:
+      "Centrum Adults Multivitamin, 130 таблеток Американский Центрум Оригина",
+    price: "175 000 сум",
+  },
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/mnkn3n8tyb4i1-UZ/image;s=644x461",
+    title:
+      "Супер! Массажер массажёр Massajer massaj apparat massajor massajyor",
+    price: "149 000 сум",
+  },
+  {
+    img: "https://apollo-olx.cdnvideo.ru/v1/files/47ji5l0cfhj3-UZ/image;s=644x461",
+    title: "Turli hildagi shpoklovkalarimiz bor",
+    price: "500 сум",
+  },
+];
 const Home = () => {
     return (
       <Container>
-        <div className="container py-4">
-          <h1 className="text-center">Главные категории</h1>
-          {categories.map(v => (
-            <Link to={v.to} key={v.to} className="category">
-              <div className="icon " style={{ backgroundColor: v.backColor }}>
-                <img src={v.icon} alt="" />
+        <div className="container-fluid bg-white py-4">
+          <div className="container">
+            {" "}
+            <h1 className="text-center">Главные категории</h1>
+            {categories.map(v => (
+              <Link to={v.to} key={v.to} className="category">
+                <div className="icon " style={{ backgroundColor: v.backColor }}>
+                  <img src={v.icon} alt="" />
+                </div>
+                <p className="text-dark fw-bold"> {v.title}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="container ">
+          <h1 className="text-center fw-bold"> Премиум объявления</h1>
+
+          <div className="row">
+            {obj.map(v => (
+              <div className="col-sm-6 col-md-4 col-lg-3 with   cursor  ">
+                <div className='bg-white  shadow rounded '>
+                  {" "}
+                  <div className="m-2">
+                    <div className="text-center obj my-1">
+                      <img className="w-100  " src={v.img} alt="" />
+                    </div>
+                    <p>{v.title}</p>
+                    <div className="d-flex justify-content-between m-2">
+                      <div className="fw-bold">{v.price}</div>
+                      <div>
+                        <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="text-dark fw-bold"> {v.title}</p>
-            </Link>
-          ))}
+            ))}
+          </div>
         </div>
       </Container>
     );

@@ -1,9 +1,10 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch,  } from 'react-router-dom';
 import MobileApps from './pages/About';
 import Home from './pages/Home';
 import Category from './pages/Category';
 import Page404 from './containers/Page404';
+import ThemeContext from './theme-context';
 
 let pages = [
   { path: "/", component: <Home />, exact: true },
@@ -16,16 +17,25 @@ let pages = [
 ]
 
 function App() {
+  // const [theme, setTheme] = useState("dark")
+  // const toggleThame = () => {
+  //   // eslint-disable-next-line eqeqeq
+  //   setTheme(theme == "dark" ? "light":"dark")
+  // }
   return (
-    <div className="App">
-      <Switch>
-        {pages.map((page, index) => {
-          return <Route path={page.path} exact={page.exact} key={page.path}>
-            {page.component}
-          </Route>
-        })}
-      </Switch>
-    </div>
+    <ThemeContext.Provider >
+      <div className="App">
+        <Switch>
+          {pages.map((page, index) => {
+            return (
+              <Route path={page.path} exact={page.exact} key={page.path}>
+                {page.component}
+              </Route>
+            );
+          })}
+        </Switch>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

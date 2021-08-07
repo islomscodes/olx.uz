@@ -21,3 +21,17 @@
 .category a{
   color: black;
 }
+.cursor{
+  cursor: pointer;
+}
+/* .with{
+  width: 150px !important;
+} */
+.obj img{
+  width: 250px !important;
+  height: 250px !important;
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+
+}

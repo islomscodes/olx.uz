@@ -2,7 +2,7 @@ import "./Category.css"
 import React from 'react'
 import Container from "../../containers/Container";
 import datas from "../../data";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 console.log(datas);
 
@@ -10,13 +10,17 @@ const Category = () => {
     const { category } = useParams();
     // console.log(category);
 
-    const obj = datas.filter(v => v.category == category)[0];
+    // eslint-disable-next-line eqeqeq
+  const filterData = datas.filter( v => v.category == category )
+    const obj = filterData.length > 0  ? filterData[0] :{};
     const data = obj.data;
     // console.log(obj);
     // console.log(data);
 
-    return (
-      <Container>
+  return (
+      
+    <Container>
+      {filterData.length == 0 && <Redirect to= "/page404" />}
         <div className="container">
           <h1>Category: {category}</h1>
           <div className="row">
